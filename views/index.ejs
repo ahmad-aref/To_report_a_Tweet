@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="assets/style.css">
+      
+    <title>home</title>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+ 
+      <li class="nav-item">
+        <a class="nav-link btn btn-danger" href="<%= url  %>" id="addAccount">Add Account</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="#" id="manageAccounts"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="/manageAccounts" id="manageAccounts">manage Accounts</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link btn btn-secondary   " href="/history" id="manageAccounts">history</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+      <div class="col-3">
+          
+    </div>
+    
+    <div class="col-6">
+        <div class="row">
+        <div class="col-md-12 card">
+            <div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Enter the username of the Twitter account to report</label>
+      <br>
+    <input type="email" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+
+  <div class="form-group">
+      <div class="row">
+      <div  class="col-2">
+           <label class="switch">
+  <input type="checkbox">
+  <span class="slider round" data-check = "0"></span>
+</label>
+          </div>
+          <div class="col-10">
+          If you want to report and block the account, activate this button</div>
+      </div>
+  
+  </div>
+  <button type="submit" class="btn btn-primary" id="report">Report</button>
+</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-3">
+        
+        
+    </div>
+      </div>
+    
+      
+      
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script>
+          
+          $(".slider").click(function(){
+              var $check = $(".slider").attr('data-check');
+              
+              if($check == '0'){
+                  $(".slider").attr('data-check','1')
+                 
+                 }else{
+                     $(".slider").attr('data-check','0')
+                 }
+                    console.log($(".slider").attr('data-check'))
+          })
+     
+          
+          
+$('#report').click( function(){
+                
+        var $name = $("#username").val();
+        var $check = $(".slider").attr('data-check');
+        var data = {name:$name,check:$check};
+        console.log(data);
+
+        $.ajax({
+        type: 'POST',
+        url: '/report',
+        data: data,
+        success: function(data){
+
+        }
+        });
+
+        return false;
+
+  });
+          
+          
+      </script>
+  </body>
+</html>

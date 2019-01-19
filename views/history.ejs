@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="assets/style.css">
+      
+    <title>history</title>
+  </head>
+  <body>
+    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link btn btn-success " href="/" id="manageAccounts">home</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="#" id="manageAccounts"></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-primary" href="/manageAccounts" id="manageAccounts">manage Accounts</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link" href="#"></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link btn btn-secondary   " href="/history" id="manageAccounts">history</a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link" href="#" id="manageAccounts"></a>
+      </li>
+          <li class="nav-item">
+        <a class="nav-link btn btn-danger Clean"  href="/Clean" id="manageAccounts">Clean history</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="row">
+<div class="col-12">
+    
+    <table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">URL</th>
+      <th scope="col">block</th>
+    </tr>
+  </thead>
+  <tbody>
+      <% for(var i = 0 ;i < accounts.length ;i++){ %>
+     
+         <tr>
+      <td><%= accounts[i].accountName %></td>
+      <td><a href="https://twitter.com/<%= accounts[i].accountName %>"><%= accounts[i].accountName %> </a></td>
+    <% if(accounts[i].check == '0'){ %>
+         <td>🔵</td>        
+          <%    }else { %>
+               <td>🔴</td>  
+           <%  } %>
+      
+    </tr>
+      
+      <%  }   %>
+ 
+   
+  </tbody>
+</table>
+    </div>
+      </div>
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <script>
+        
+     
+          
+          
+$('.Clean').click( function(){
+                
+
+        $.ajax({
+        type: 'POST',
+        url: '/Clean',
+        success: function(data){
+window.location.href = window.location.href;
+        }
+        });
+
+        return false;
+
+  });
+          
+          
+      </script>
+  </body>
+</html>
